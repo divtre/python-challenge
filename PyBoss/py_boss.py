@@ -78,7 +78,7 @@ for tocheck in csv_no :
             f_name = row[1].split(" ")
             FName.append(f_name[0])
             LName.append(f_name[1])
-            DOB.append(datetime.datetime.strptime(row[2], '%Y-%m-%d').strftime('%d/%m/%y'))
+            DOB.append(datetime.datetime.strptime(row[2], '%Y-%m-%d').strftime('%m/%d/%Y'))
             SSN.append(re.sub(r'\d\d\d-\d\d',r'xxx-xx',row[3]))
             State.append(us_state_abbrev[row[4]])
     
