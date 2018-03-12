@@ -54,7 +54,7 @@ for tocheck in csv_no :
         print("Greatest Increase in Revenue:", max_rev_change_date,"($", max_rev_change,")")
         print("Greatest Decrease in Revenue:", min_rev_change_date,"($", min_rev_change,")")
 
-        output_path = os.path.join('budget_data_' +tocheck+'.txt')
+        output_path = os.path.join('output_budget_data_' +tocheck+'.txt')
         file = open(output_path, 'w')
         file.write("Financial Analysis \n") 
         file.write("-----------------------------------\n")
