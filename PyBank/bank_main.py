@@ -8,6 +8,8 @@ for tocheck in csv_no :
     with open(pybank_csv, 'r', encoding="utf-8") as csvFile:
         Date=[]
         Revenue=[]
+        Revenue_increase=[]
+        total_revenue=0
         csvReader = csv.reader(csvFile, delimiter=',')
 
         # Skipp headers
@@ -19,23 +21,24 @@ for tocheck in csv_no :
             Date.append(row[0])
             Revenue.append(row[1])
             no_of_months=len(Date)
-            total_revenue=0
-            total_revenue=int(total_revenue)+(int(row[1]))
-            avg_revenue=int(total_revenue)/int(no_of_months)
-            max_revenue_row = max(Revenue, key=int)
-            min_revenue_row= min(Revenue,key=int)
-          
-            max_date_index=int(Revenue.index(max_revenue_row))
-            min_date_index=int(Revenue.index(min_revenue_row))
-            
-            max_date=Date[max_date_index]
-            min_date=Date[min_date_index]
-        print("Financial Analysis")
-        print("---------------------")
-        print("Total no of months : "+str(no_of_months))
-        print("Total Revenue : "+str(total_revenue))
-        print("Average Revenue :"+str(avg_revenue))
-        print("Greated increase in revenue: "+str(max_date)+" "+"("+str(max_revenue_row)+")")
-        print("Greated decrease in revenue: "+str(min_date)+" "+"("+str(min_revenue_row)+")")
-        #print("##"+str(max_date_index))
-        #print("max revenue"+str(max_revenue_row)+" "+str(max_date))
+            print
+            print("Financial Analysis")
+            print("-----------------------------------")
+            print("Total Months:", no_of_months)
+            print("Total Revenue: $", sum(Revenue))
+
+            for i in range(0,no_of_months+1):
+                rev_change.append(revenue[i] - revenue[i-1])   
+                avg_rev_change = sum(rev_change)/len(rev_change)
+
+                max_rev_change = max(rev_change)
+
+                min_rev_change = min(rev_change)
+
+                max_rev_change_date = str(date[rev_change.index(max(rev_change))])
+                min_rev_change_date = str(date[rev_change.index(min(rev_change))])
+
+
+    print("Avereage Revenue Change: $", round(avg_rev_change))
+    print("Greatest Increase in Revenue:", max_rev_change_date,"($", max_rev_change,")")
+    print("Greatest Decrease in Revenue:", min_rev_change_date,"($", min_rev_change,")")
