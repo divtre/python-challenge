@@ -1,9 +1,6 @@
 import csv
 import os
 
-# Files to load (Remember to change these)
-#file_to_load = "raw_data/budget_data_1.csv"
-
 csv_no=['1','2']
 
 for tocheck in csv_no :
@@ -18,12 +15,7 @@ for tocheck in csv_no :
         date = []
         rev_change = [] 
 
-        # in this loop I did sum of column 1 which is revenue in csv file and counted total months which is column 0 
         for row in reader:
-            ''' revenue = []
-            date = []
-            rev_change = [] '''
-
             revenue.append(float(row[1]))
             date.append(row[0])
         var1=len(date)
@@ -33,8 +25,6 @@ for tocheck in csv_no :
         print("Total Months:", len(date))
         print("Total Revenue: $", sum(revenue))
 
-
-        #in this loop I did total of difference between all row of column "Revenue" and found total revnue change. Also found out max revenue change and min revenue change. 
         for i in range(1,len(revenue)):
             #print("uuu"+str(revenue[1])+"***"+str(revenue[0]))
             rev_change.append(revenue[i] - revenue[i-1])   
@@ -46,7 +36,6 @@ for tocheck in csv_no :
             index_2=rev_change.index(min_rev_change)+1
             max_rev_change_date = str(date[index])
             min_rev_change_date = str(date[index_2])
-        #print("Revenue change"+str(sum(rev_change)))
 
         avg_rev_change = (sum(rev_change)+revenue[0])/(len(rev_change)+1)
 
@@ -66,4 +55,4 @@ for tocheck in csv_no :
 
 
         file.close()
-          # ext_file.write("Purchase Amount: %s price %f" % (TotalAmount, price))
+          
